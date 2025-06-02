@@ -1,111 +1,170 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Katalog Tenun Kaliuda</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katalog Tenun Kaliuda</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f9f5f1;
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 1rem;
-        min-height: 100vh;
-      }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f5f1;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
 
-      header {
-        text-align: center;
-        margin-bottom: 2rem;
-        max-width: 600px;
-      }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
 
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #3b2f2f;
+    }
+
+    p.description {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .cover-gallery {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .cover-gallery img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .read-more-button {
+      background-color: #3b2f2f;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .read-more-button:hover {
+      background-color: #5a4949;
+    }
+
+    .pdf-viewer {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #000000cc;
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pdf-viewer iframe {
+      width: 90%;
+      height: 90%;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      background-color: white;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #fff;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: auto;
+      font-size: 0.9rem;
+      color: #777;
+      padding-top: 2rem;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    @media (max-width: 480px) {
       h1 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        color: #3b2f2f;
+        font-size: 1.5rem;
       }
 
       p.description {
-        font-size: 1rem;
-        color: #555;
-        margin-bottom: 1.5rem;
-      }
-
-      .cover-gallery {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
       }
 
       .cover-gallery img {
-        width: 100%;
-        max-width: 250px;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 150px;
       }
 
-      .read-more-button {
-        background-color: #3b2f2f;
-        color: #fff;
-        padding: 0.6rem 1.2rem;
-        border: none;
-        border-radius: 6px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background 0.3s;
+      .pdf-viewer iframe {
+        width: 95%;
+        height: 80%;
       }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Katalog Tenun Kaliuda</h1>
+    <p class="description">
+      Katalog digital berisi cerita, motif, dan makna kain tenun ikat khas Desa Kaliuda – warisan budaya dari Sumba Timur.
+    </p>
+  </header>
 
-      .read-more-button:hover {
-        background-color: #5a4949;
-      }
+  <div class="cover-gallery">
+    <img src="cover-depan.png" alt="Sampul Depan Katalog" />
+    <img src="cover-belakang.png" alt="Sampul Belakang Katalog" />
+  </div>
 
-      footer {
-        margin-top: auto;
-        font-size: 0.9rem;
-        color: #777;
-        padding-top: 2rem;
-        text-align: center;
-        max-width: 600px;
-      }
+  <button class="read-more-button" onclick="openPDF()">Baca Selengkapnya</button>
 
-      @media (max-width: 480px) {
-        h1 {
-          font-size: 1.5rem;
-        }
-        p.description {
-          font-size: 0.9rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Katalog Tenun Kaliuda</h1>
-      <p class="description">
-        Katalog digital berisi cerita, motif, dan makna kain tenun ikat khas Desa Kaliuda – warisan budaya dari Sumba Timur.
-      </p>
-    </header>
+  <div class="pdf-viewer" id="pdfViewer">
+    <button class="close-btn" onclick="closePDF()">Tutup</button>
+    <iframe src="katalog-kaliuda.pdf" title="Katalog Tenun Kaliuda"></iframe>
+  </div>
 
-    <div class="cover-gallery">
-      <img src="cover-depan.png" alt="Sampul Depan Katalog" />
-      <img src="cover-belakang.png" alt="Sampul Belakang Katalog" />
-    </div>
+  <footer>&copy; 2025 Emilianus U. K. Patar | Proyek Dana Indonesiana</footer>
 
-    <button class="read-more-button" onclick="window.open('katalog-kaliuda.pdf', '_blank')">
-      Baca Selengkapnya
-    </button>
+  <script>
+    function openPDF() {
+      document.getElementById("pdfViewer").style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
 
-    <footer>&copy; 2025 Emilianus U. K. Patar | Proyek Dana Indonesiana</footer>
-  </body>
+    function closePDF() {
+      document.getElementById("pdfViewer").style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  </script>
+</body>
 </html>
