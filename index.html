@@ -87,29 +87,7 @@
       .read-button:hover {
         background-color: #5a4949;
       }
-
-      section.prolog {
-        max-width: 700px;
-        background-color: #fff;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        border-left: 5px solid #3b2f2f;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        border-radius: 6px;
-        font-size: 1rem;
-        line-height: 1.6;
-      }
-
-      section.prolog h2 {
-        font-size: 1.3rem;
-        margin-bottom: 0.75rem;
-        color: #3b2f2f;
-      }
-
-      .prolog-summary {
-        margin-bottom: 1rem;
-      }
-
+      
       .toggle-button {
         background-color: #3b2f2f;
         color: #fff;
@@ -123,11 +101,6 @@
 
       .toggle-button:hover {
         background-color: #5a4949;
-      }
-
-      .prolog-full {
-        display: none;
-        margin-top: 1rem;
       }
 
       footer {
@@ -158,54 +131,8 @@
       📖 Baca Selengkapnya
     </button>
 
-    <section class="prolog">
-      <h2>Prolog</h2>
-      <p class="prolog-summary">
-        Kampung Kaliuda dikenal dengan tradisi tenunnya. Dalam budaya Marapu, tenun tidak sekadar pakaian – ia memuat narasi tentang manusia, alam, dan leluhur.
-      </p>
-      <button class="toggle-button" onclick="toggleProlog()">Baca Selengkapnya</button>
-      <div class="prolog-full" id="prologFull">
-        <!-- Isi prolog lengkap -->
-        <p>
-          Kampung Kaliuda terletak di timur pulau Sumba. Kata Kaliuda berasal dari frasa <strong>Kalli Udda</strong>, bermakna ‘banyak batu asah’ yang digunakan untuk menajamkan parang dan alat besi lainnya.
-        </p>
-        <p>
-          Masyarakat Kaliuda dulunya menganut kepercayaan <strong>Marapu</strong>. Ajaran ini menekankan keseimbangan manusia dengan pencipta, sesama, dan alam – nilai yang tercermin dalam seni tenun mereka.
-        </p>
-        <p>
-          Tenun adalah cara bercerita dan menyampaikan pesan antar generasi. Motif figuratif dan geometris menyampaikan simbol, sejarah, serta identitas masyarakat.
-        </p>
-        <p>
-          Motif dibuat dengan prinsip dualisme – selalu seimbang dan berpasangan, serta dibagi dalam tiga bagian: atas, tengah, dan bawah. Saat dikenakan, motif ini terlihat menyatu secara simbolik.
-        </p>
-        <p>
-          Teknik ikat yang digunakan diwariskan secara turun-temurun. Pengrajin mengikat motif dengan imajinasi atau gambar pola terlebih dahulu.
-        </p>
-        <p>
-          Hewan-hewan dalam motif sering dikaitkan dengan syair adat (<em>luluku</em>) yang dilantunkan dalam ritual, memperlihatkan keharmonisan manusia dengan alam.
-        </p>
-        <p>
-          Buku ini berupaya mendokumentasikan motif-motif lama berdasarkan narasi penenun dan peribahasa adat – bukan hanya kain, tapi juga cerita yang terkandung di dalamnya.
-        </p>
-      </div>
-    </section>
-
     <footer>
       &copy; 2025 Emilianus U. K. Patar | Proyek Dana Indonesiana
     </footer>
-
-    <script>
-      function toggleProlog() {
-        const prolog = document.getElementById('prologFull');
-        const button = document.querySelector('.toggle-button');
-        if (prolog.style.display === 'none' || prolog.style.display === '') {
-          prolog.style.display = 'block';
-          button.textContent = 'Tutup Prolog';
-        } else {
-          prolog.style.display = 'none';
-          button.textContent = 'Baca Selengkapnya';
-        }
-      }
-    </script>
   </body>
 </html>
