@@ -2,76 +2,54 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Buku Jurnal Merayakan Kaliuda dalam Tenun Ikat</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background-color: #f9f5f1;
         color: #333;
+        padding: 2rem 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 2rem 1rem;
         min-height: 100vh;
+        margin: 0;
       }
-
       header {
         text-align: center;
-        margin-bottom: 2rem;
         max-width: 600px;
+        margin-bottom: 2rem;
         width: 100%;
       }
-
       h1 {
         font-size: 2rem;
-        margin-bottom: 0.5rem;
         color: #3b2f2f;
+        margin-bottom: 0.5rem;
       }
-
       p.description {
         font-size: 1rem;
         color: #555;
         margin-bottom: 1.5rem;
       }
-
       .cover-gallery {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: 1rem;
         margin-bottom: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
       }
-
       .cover-gallery img {
-        width: 100%;
         max-width: 250px;
+        width: 100%;
         border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
         transition: transform 0.3s ease;
       }
-
       .cover-gallery img:hover {
         transform: scale(1.03);
       }
-
-      @media (min-width: 768px) {
-        .cover-gallery {
-          flex-direction: row;
-          justify-content: center;
-        }
-
-        .cover-gallery img {
-          max-width: 350px;
-        }
-      }
-
       .read-button {
         background-color: #3b2f2f;
         color: #fff;
@@ -80,46 +58,29 @@
         border-radius: 6px;
         cursor: pointer;
         font-size: 1rem;
-        transition: background 0.3s;
+        transition: background-color 0.3s;
         margin-bottom: 2rem;
+        text-decoration: none;
+        display: inline-block;
       }
-
       .read-button:hover {
         background-color: #5a4949;
       }
-      
-      .toggle-button {
-        background-color: #3b2f2f;
-        color: #fff;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        font-size: 0.95rem;
-        cursor: pointer;
-        margin-bottom: 1rem;
-      }
-
-      .toggle-button:hover {
-        background-color: #5a4949;
-      }
-
       footer {
-        margin-top: auto;
+        text-align: center;
         font-size: 0.9rem;
         color: #777;
-        text-align: center;
         max-width: 600px;
         width: 100%;
         padding-top: 1rem;
+        margin-top: auto;
       }
     </style>
   </head>
   <body>
     <header>
       <h1>Buku Jurnal Merayakan Kaliuda dalam Tenun Ikat</h1>
-      <p class="description">
-       Buku Jurnal ini berisi cerita, motif, dan makna kain tenun ikat khas Desa Kaliuda – warisan budaya dari Sumba Timur.
-      </p>
+      <p class="description">Buku Jurnal ini berisi cerita, motif, dan makna kain tenun ikat khas Desa Kaliuda – warisan budaya dari Sumba Timur.</p>
     </header>
 
     <div class="cover-gallery">
@@ -127,12 +88,8 @@
       <img src="cover-belakang.png" alt="Cover Belakang Katalog" />
     </div>
 
-    <button class="read-button" onclick="window.open('katalog-kaliuda.pdf', '_blank')">
-      📖 Baca Selengkapnya
-    </button>
+    <a class="read-button" href="buku.html">📖 Baca Selengkapnya</a>
 
-    <footer>
-      &copy; 2025 Emilianus U. K. Patar | Proyek Dana Indonesiana
-    </footer>
+    <footer>&copy; 2025 Emilianus U. K. Patar | Proyek Dana Indonesiana</footer>
   </body>
 </html>
