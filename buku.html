@@ -82,6 +82,13 @@
         container.appendChild(img);
       }
 
+      // Tambah tombol kembali di bawah gambar terakhir
+      const backLink = document.createElement("a");
+      backLink.href = "index.html";
+      backLink.className = "back-link";
+      backLink.textContent = "⬅ Kembali ke Beranda";
+      container.appendChild(backLink);
+
       // Nonaktifkan klik kanan
       document.addEventListener("contextmenu", (e) => e.preventDefault());
     </script>
