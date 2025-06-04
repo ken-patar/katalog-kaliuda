@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Buku Jurnal - Kaliuda</title>
+    <title>PDF Viewer dengan PDF.js</title>
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -11,58 +11,85 @@
         color: #333;
         margin: 0;
         padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       header {
         text-align: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
       }
 
-      h1 {
-        font-size: 1.8rem;
-        color: #3b2f2f;
-        margin-bottom: 0.3rem;
-      }
-
-      p {
-        color: #555;
-        font-size: 1rem;
-      }
-
-      .pdf-container {
-        width: 100%;
-        height: 90vh;
-        max-width: 900px;
-        margin: 0 auto;
+      #pdf-render {
         border: 1px solid #ccc;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      iframe {
+        max-width: 900px;
         width: 100%;
-        height: 100%;
-        border: none;
+        height: 90vh;
+        overflow: auto;
+        background: white;
+        user-select: none; /* agar teks tidak bisa diseleksi */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        position: relative;
       }
 
-      .back-link {
+      canvas {
         display: block;
-        text-align: center;
-        margin-top: 1rem;
-        color: #3b2f2f;
-        text-decoration: none;
-        font-size: 0.95rem;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>📖 BUKU JURNAL MERAYAKAN KALIUDA DALAM TENUN IKAT</h1>
+      <h1>📖 Buku Jurnal Merayakan Kaliuda dalam Tenun Ikat</h1>
     </header>
 
-    <div class="pdf-container">
-      <iframe src="buku-jurnal-tenun-kaliuda.pdf" type="application/pdf"></iframe>
-    </div>
+    <div id="pdf-render" oncontextmenu="return false;"></div>
 
-    <a class="back-link" href="index.html">⬅ Kembali ke Beranda</a>
+    <a href="index.html" style="margin-top: 1rem; color: #3b2f2f; text-decoration: none">⬅ Kembali ke Beranda</a>
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.min.js"></script>
+
+    <script>
+      // Lokasi PDF-nya
+      const url = "buku-jurnal-tenun-kaliuda.pdf";
+
+      const pdfjsLib = window["pdfjs-dist/build/pdf"];
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js";
+
+      const container = document.getElementById("pdf-render");
+
+      // Render halaman PDF pertama
+      pdfjsLib.getDocument(url).promise.then((pdfDoc) => {
+        pdfDoc.getPage(1).then((page) => {
+          const viewport = page.getViewport({ scale: 1.2 });
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          // Hapus isi container dulu kalau ada
+          container.innerHTML = "";
+          container.appendChild(canvas);
+
+          const renderContext = {
+            canvasContext: ctx,
+            viewport: viewport,
+          };
+          page.render(renderContext);
+        });
+      });
+
+      // Nonaktifkan klik kanan di area PDF
+      container.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+      });
+    </script>
   </body>
 </html>
