@@ -11,34 +11,51 @@
         box-sizing: border-box;
       }
 
+      html,
       body {
+        height: 100%;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background-color: #f9f5f1;
         color: #333;
+      }
+
+      body {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         align-items: center;
         padding: 2rem 1rem;
-        min-height: 100vh;
       }
 
       header {
         text-align: center;
         margin-bottom: 2rem;
-        max-width: 600px;
+        max-width: 900px;
         width: 100%;
       }
 
+      header {
+        text-align: center;
+        margin-bottom: 2rem;
+        max-width: 1000px; /* dilebarkan */
+        width: 100%;
+        padding: 0 1rem;
+      }
+
       h1 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.3rem; /* dikecilkan agar muat satu baris */
         color: #3b2f2f;
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+        white-space: nowrap;
       }
 
       p.description {
-        font-size: 1rem;
+        font-size: 0.9rem; /* dikecilkan juga */
         color: #555;
         margin-bottom: 1.5rem;
+        line-height: 1.4;
+        white-space: nowrap;
       }
 
       .cover-gallery {
@@ -47,11 +64,12 @@
         align-items: center;
         gap: 1rem;
         margin-bottom: 2rem;
+        width: 100%;
       }
 
       .cover-gallery img {
-        width: 100%;
-        max-width: 250px;
+        width: 90%;
+        max-width: 300px;
         border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
@@ -62,6 +80,14 @@
       }
 
       @media (min-width: 768px) {
+        h1 {
+          font-size: 2.8rem;
+        }
+
+        p.description {
+          font-size: 1.25rem;
+        }
+
         .cover-gallery {
           flex-direction: row;
           justify-content: center;
@@ -75,11 +101,11 @@
       .read-button {
         background-color: #3b2f2f;
         color: #fff;
-        padding: 0.6rem 1.2rem;
+        padding: 0.75rem 1.5rem;
         border: none;
         border-radius: 6px;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 1.05rem;
         transition: background 0.3s;
         margin-bottom: 2rem;
       }
@@ -88,36 +114,21 @@
         background-color: #5a4949;
       }
 
-      .toggle-button {
-        background-color: #3b2f2f;
-        color: #fff;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        font-size: 0.95rem;
-        cursor: pointer;
-        margin-bottom: 1rem;
-      }
-
-      .toggle-button:hover {
-        background-color: #5a4949;
-      }
-
       footer {
-        margin-top: auto;
         font-size: 0.9rem;
         color: #777;
         text-align: center;
-        max-width: 600px;
+        max-width: 900px;
         width: 100%;
         padding-top: 1rem;
+        padding-bottom: 1rem;
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>Buku Jurnal Merayakan Kaliuda dalam Tenun Ikat</h1>
-      <p class="description">Buku Jurnal ini berisi cerita, motif, dan makna kain tenun ikat khas Desa Kaliuda – warisan budaya dari Sumba Timur.</p>
+      <h1>Buku Jurnal Tenun Ikat Kaliuda</h1>
+      <p class="description">Cerita & makna kain tenun khas Desa Kaliuda, Sumba Timur</p>
     </header>
 
     <div class="cover-gallery">
