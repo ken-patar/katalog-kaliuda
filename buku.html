@@ -11,51 +11,47 @@
         color: #333;
         margin: 0;
         padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-
       header {
         text-align: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        max-width: 1080px;
+        width: 100%;
       }
-
       h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         color: #3b2f2f;
-        margin-bottom: 0.3rem;
       }
-
-      p {
-        color: #555;
-        font-size: 1rem;
-      }
-
-      .pdf-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 200%;
+      .book-pages {
+        max-width: 1080px;
+        width: 100%;
+        overflow-y: auto;
         height: 90vh;
-        max-width: 1350px;
-        margin: 0 auto;
         border: 1px solid #ccc;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
+        background: white;
+        scroll-snap-type: y mandatory; /* aktifkan snap scroll */
       }
-
-      iframe {
-        width: 200%;
-        max-width: 1350px;
-        height: 100%;
-        border: none;
-      }
-
-      .back-link {
+      .book-pages img {
+        width: 100%;
+        height: 90vh; /* agar gambar memenuhi tinggi container */
+        object-fit: contain; /* supaya proporsional, tidak terpotong */
         display: block;
-        text-align: center;
+        scroll-snap-align: start; /* supaya snap ke tiap gambar */
+        user-select: none;
+        pointer-events: none;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .back-link {
         margin-top: 1rem;
         color: #3b2f2f;
         text-decoration: none;
         font-size: 0.95rem;
+        user-select: none;
       }
     </style>
   </head>
@@ -64,13 +60,30 @@
       <h1>📖 BUKU JURNAL MERAYAKAN KALIUDA DALAM TENUN IKAT</h1>
     </header>
 
-    <div class="pdf-container">
-      <iframe src="buku-jurnal-tenun-kaliuda.pdf#toolbar=0" type="application/pdf"></iframe>
-    </div>
+    <div class="book-pages" id="book-pages"></div>
 
     <a class="back-link" href="index.html">⬅ Kembali ke Beranda</a>
+
     <script>
-      document.addEventListener("contextmenu", (event) => event.preventDefault());
+      const container = document.getElementById("book-pages");
+      const totalPages = 43;
+      const folder = "tenun-kaliuda";
+
+      function padNumber(num, size) {
+        let s = num.toString();
+        while (s.length < size) s = "0" + s;
+        return s;
+      }
+
+      for (let i = 1; i <= totalPages; i++) {
+        const img = document.createElement("img");
+        img.src = `${folder}/Page ${padNumber(i, 5)}.jpg`;
+        img.alt = `Halaman ${i}`;
+        container.appendChild(img);
+      }
+
+      // Nonaktifkan klik kanan
+      document.addEventListener("contextmenu", (e) => e.preventDefault());
     </script>
   </body>
 </html>
