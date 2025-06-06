@@ -21,6 +21,7 @@
         margin-bottom: 1rem;
         max-width: 1080px;
         width: 100%;
+        padding: 0 1rem;
       }
 
       h1 {
@@ -37,6 +38,8 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         background: white;
         scroll-snap-type: y mandatory;
+        scroll-padding-top: 1rem;
+        padding: 0.5rem;
       }
 
       .book-pages img {
@@ -49,6 +52,7 @@
         pointer-events: none;
         border-radius: 4px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 0.5rem;
       }
 
       .back-link {
@@ -64,6 +68,27 @@
         border-radius: 8px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         scroll-snap-align: start;
+      }
+
+      /* Responsive untuk layar kecil */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.2rem;
+        }
+
+        .book-pages {
+          height: 80vh;
+          padding: 0.5rem;
+        }
+
+        .book-pages img {
+          height: 80vh;
+        }
+
+        .back-link {
+          font-size: 0.95rem;
+          padding: 0.4rem 0.8rem;
+        }
       }
     </style>
   </head>
